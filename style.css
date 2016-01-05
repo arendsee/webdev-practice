@@ -1,0 +1,25 @@
+body {
+    background-color:gray;
+    color:maroon;
+}
+
+h1 {
+    color:indigo
+}
+
+p {
+    border:1px solid black;
+    padding:10px;
+    margin:20px;
+}
+
+p#unique {
+    border:1px solid maroon;
+    padding:10px;
+    margin:50px;
+    color:brown;
+}
+
+p.vp {
+    color:red;
+}
