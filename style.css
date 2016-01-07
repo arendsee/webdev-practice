@@ -1,5 +1,5 @@
 body {
-    background-color:gray;
+    background-color:white;
     color:maroon;
 }
 
@@ -44,4 +44,8 @@ th {
 table {
     border: 2px solid black;
     border-spacing: 10px
+}
+
+div.equation {
+    background-color:white
 }
