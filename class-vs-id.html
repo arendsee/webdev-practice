@@ -1,0 +1,56 @@
+<DOCTYPE HTML>
+<html>
+<head>
+  <title>Class versus id</title> 
+  <style>
+    p.a {
+      background-color:cyan;
+    }
+    p.center {
+      text-align:center;
+    }
+    p#footer {
+      background-color:black;
+      color:white;
+      position:absolute;
+      bottom:0;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <h1>What is the difference between id and class hooks?</h1>
+
+  <p class="a">
+    IDs should be unique, used for only one element
+  </p>
+
+  <p class="a">
+    Classes can (should) be used for manu
+  </p>
+
+  <p class="a">
+    Each of these paragraphs is in the 'a' class
+  </p>
+
+  <p class="a center">
+    But this one also is also in the 'center' class. You can pile on
+    attributes with class. Pretty neat.
+  </p>
+
+  <p class="a center" id="footer">
+    Something like a footer, that only appears once, should use an id.
+  </p>
+
+  <p>The id is important to the browser, e.g. 'www.mysite.com#some_id' will
+  jumpt to the element 'some_id'</p>
+
+  <p>
+    <a href="https://css-tricks.com/the-difference-between-id-and-class/">Here is a cool site</a>
+  </p>
+
+</body>
+
+</html>
