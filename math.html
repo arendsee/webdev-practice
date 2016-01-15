@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX","output/HTML-CSS"],
+      tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+
+<body>
+
+  <h1>Rendering equations in HTML</h1>
+
+  <h2>Using latex.codecogs.com/latexit.js</h2>
+    <code><pre>
+      &lt;!DOCTYPE HTML&gt;
+      &lt;html&gt;
+      &lt;head&gt;
+        &lt;script type="text/javascript" src="http://latex.codecogs.com/latexit.js"&gt;&lt;/script&gt;
+      &lt;/head&gt;
+      &lt;body&gt;
+        &lt;br&gt;
+        &lt;div class="equation" lang="latex"&gt;
+            $x \approx \sum_{i=1}^n \text{Norm}(\mu, \sigma)$
+        &lt;/div&gt;
+      &lt;/body&gt;
+    </pre></code>
+
+    <p>
+      But this requires wrapping every latex expression, even short little
+      inline variables, in a giant tag.
+    </p>
+  
+  <h2>Using MathJax</h2>
+    <p>
+      Include the following in the header, and you can use full LaTeX
+      functionallity in your HTML file, see <a href="https://www.tuhh.de/MathJax/test/sample.html">this example</a>.
+    </p>
+    <code><pre>
+      &lt;head&gt;
+        &lt;script type="text/x-mathjax-config"&gt;
+          MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX","output/HTML-CSS"],
+            tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+          });
+        &lt;/script&gt;
+        &lt;script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML"&gt;&lt;/script&gt;
+      &lt;/head&gt;
+    </code></pre>
+
+    For example, with the following code:
+
+    <code><pre>
+      $$f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{\frac{x - \mu}{2\sigma^2}}$$
+    </code></pre>
+
+    I can render:
+
+      $$f(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{\frac{x - \mu}{2\sigma^2}}$$
+
+</body>
+
+</html>
