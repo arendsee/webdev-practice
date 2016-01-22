@@ -1,0 +1,55 @@
+<DOCTYPE html>
+<html>
+<head>
+  <title>Chapter Notes</title>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX","output/HTML-CSS"],
+      tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML"></script>
+
+</head>
+
+
+<body>
+  <h1>Chapter 1</h1>
+    <h2>2.2 Assessing Model Accuracy</h2>
+
+      Many models will be introduced. This is necessary since there is no model
+      that is best in all situations.
+
+      <h3>2.2.1 Measuting the quality of fit</h3>
+
+        <p>
+          In regression setting the main measure is mean square error. Given a
+          set of training data we can calculate the training MSE. But you can
+          always build a model where the MSE is 0. The MSE often is not of
+          intrinsic interest.
+        </p>
+
+        <p>
+          What we really want to a measure of the models ability to predict new
+          data. Let ($x_0$, $y_0$) be a pair of data points not seen in the
+          training data. Then our quality of fit predictor can be:
+        </p>
+
+        $$ S = Ave(f(x_0) - y_0) $$
+
+        <p>
+          As the number of parameters increases, training MSE will fall to 0.
+          test MSE, however, will reach a minimum and then increase.
+        </p>
+
+      <h3>2.2.3 Bias-variance tradeoff</h3>
+
+      <h3>2.2.4 Classification setting</h3>
+
+</body>
+</html>
