@@ -3,12 +3,20 @@
 
 <head>
   <title>Daily coverage</title>
-  <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      extensions: ["tex2jax.js"],
+      jax: ["input/TeX","output/HTML-CSS"],
+      tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 
 <body>
   <h1>Dail coverage</h1>
     <table border=1>
+      <!--New Week-->
       <tr>
         <td rowspan=3>wk1</td>
         <td>M</td>
@@ -18,35 +26,29 @@
         <td>W</td>
         <td>
           
-          Expected value. Densities and distributions (CDF).
+          <p>Expected value. Densities and distributions (CDF).</p>
           
           <br>
           <div class="equation" lang="latex"> f(x) = F(x)' </div>
           </br>
 
-          Not all distributions have a density, but all densities have a distribution.
+          <p>Not all distributions have a density, but all densities have a distribution.</p>
 
         </td>
       </tr>
         <td>F</td>
         <td>
 
-        <p>
-          Continuing finding the error criteria. training MSE. Now we want to
-          talk about, well, probably test MSE. 
-        </p>
+        <p>Continuing finding the error criteria. training MSE. Now we want to
+        talk about, well, probably test MSE.</p>
 
-        <p>
-           No free lunch.
-        </p>
+        <p>No free lunch.</p>
 
         <div class="definition">
           consistent: the method converges to the truth asymptotically
         </div>
 
-        <p>
-        Are you trying to predict? Or are you trying to understand?
-        </p>
+        <p>Are you trying to predict? Or are you trying to understand?</p>
 
         <div class="definition">
           overfit: 
@@ -60,37 +62,80 @@
           flexible: more parameters, less interpretable
         </div>
 
-        <p>
-           What is the cost of adding parameters to a model? More degrees of
-           freedom.
-        </p>
+        <p> What is the cost of adding parameters to a model? More degrees of
+        freedom.</p>
 
         <div class="definition">
           Irreducible error: error in prediction, due to finite size of
           training data
         </div>
 
-        <p>
+        <p> Want to avoid variability in the method. Variance and bias:
+        mathematical definitions. There is a relationship between MSE, bias,
+        and variance; you can get it by using the relation
+        $Var(\hat{m}(x))=Var(\hat{m}(x)-m(x))$ </p>
 
-          Want to avoid variability in the method. Variance and bias:
-          mathematical definitions. There is a relationship between MSE, bias,
-          and variance; you can get it by using the relation
-          $Var(\hat{m}(x))=Var(\hat{m}(x)-m(x))$
-
-        </p>
-
-        <p>
-        For classification, there is a single best estimator, the Bayes
+        <p> For classification, there is a single best estimator, the Bayes
         estimator. But it can't be used because there are unknown parameters.
-        There is a naive bayes classifier that is tries to estimate them.
-        </p>
+        There is a naive bayes classifier that is tries to estimate them.</p>
 
           <bf>
 
-          How to measure goodness of fit, mean sum of squares. Why square the residuals? Makes the math easier.
+          <p>How to measure goodness of fit, mean sum of squares. Why square
+          the residuals? Makes the math easier.</p>
         
+        </td> </tr>
+
+
+      
+      <!--New Week-->
+      <tr>
+        <td rowspan=3>wk2</td>
+        <td>M</td>
+        <td>No class</td>
+      </tr>
+      <tr>
+        <td>T</td>
+        <td>
+          <p>Bayes classifier, proved that it is the best possible discrete classifier</p>
+          <p>K-means nearest neighbors.</p>
         </td>
       </tr>
+      <tr>
+        <td>F</td>
+        <td>
+          <p>Simple linear regression (based on linear regression notes by M)</p>
+
+          <p>SLR assumes errors are on the Y, not the X, if you add in the X
+          errors, things get tricky.</p>
+
+          <p>Derive the solution to betas, we don't actually use this, we use
+          the matrix solution. But the non-matrix one is easier to build off of
+          ...</p>
+
+          <p>Calculate bias of the beta estimators</p>
+
+        </td>
+      </tr>
+
+      <!--New Week-->
+      <tr>
+        <td rowspan=3>wk3</td>
+        <td>M</td>
+        <td>
+
+          <p>Estimate the variance of e </p>
+
+          <p>How to choose measurements of x to minimize variation in slope
+          estimate</p>
+
+          <p>estimated slope is an linear combination of the y's</p>
+
+          <p>How to do this stuff in R</p>
+
+        </td>
+      </tr>
+
     </table>
 </body>
 
