@@ -121,22 +121,64 @@
       <!--New Week-->
       <tr>
         <td rowspan=3>wk3</td>
-        <td>M</td>
+          <td>
+            M
+          </td>
+          <td>
+
+            <p>Estimate the variance of e </p>
+
+            <p>How to choose measurements of x to minimize variation in slope
+            estimate</p>
+
+            <p>estimated slope is an linear combination of the y's</p>
+
+            <p>How to do this stuff in R</p>
+
+          </td>
+        </td>
+        <td>
+          F
+        </td>
         <td>
 
-          <p>Estimate the variance of e </p>
+          <p>What if you fit a quadratic model to linear data? Test the
+          significance of the quadratic coefficient. From this you can learn
+          which parameters are significant but you cannot know, from this,
+          which model is better for prediction.</p>
 
-          <p>How to choose measurements of x to minimize variation in slope
-          estimate</p>
+          <p>R-square, what does it mean, what is wrong with it? It only says
+          how much of the data is explained by the model, it does not say which
+          is better at predicting. R-square: How close is the model to the
+          local constant? Locality matters, since a linear model fit across the
+          arc of a parabola is still pretty good looking. See the examples in
+          the notes. R-square is only good for linear relationships (think this
+          through)? It really makes problems in higher dimensionality.</p>
+          
+          <p>It does not account for the complexity of the model. You can
+          always find a model with an R-square of 0 for a given data set.</p>
 
-          <p>estimated slope is an linear combination of the y's</p>
+          <p>Adjusted R-square: $R_{adj}(p)$, where $p$ is the number of
+          parameters.</p>
 
-          <p>How to do this stuff in R</p>
+          <p>F-test takes into account multiple testing. Why is it important?
+          If it is not, then your model is totally wrong. Tests the hypotheses
+          that all of the coefficients are 0. See notes. Don't worry about the
+          details.</p>
 
         </td>
       </tr>
 
     </table>
+
+    <h2>Notes of teaching style</h2>
+
+    I saw for a moment the mismatch between minds. The student asks what
+    complexity means in this context, "the dimensionality of the data". But the
+    instructor misses this. The question seems trivial, of course complexity is
+    the number of parameters in the model. But the student is confusing the
+    complexity of the model and the complexity of the data.
+
 </body>
 
 </html>
