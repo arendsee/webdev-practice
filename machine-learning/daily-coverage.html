@@ -121,10 +121,10 @@
       <!--New Week-->
       <tr>
         <td rowspan=3>wk3</td>
-          <td>
-            M
-          </td>
-          <td>
+        <td>
+          M
+        </td>
+        <td>
 
             <p>Estimate the variance of e </p>
 
@@ -135,8 +135,16 @@
 
             <p>How to do this stuff in R</p>
 
-          </td>
         </td>
+      </tr>
+        <td>
+          W
+        </td>
+        <td>
+          strangely absent
+        </td>
+      </tr>
+      <tr>
         <td>
           F
         </td>
@@ -169,6 +177,97 @@
         </td>
       </tr>
 
+      <!--New Week-->
+      <tr>
+        <td rowspan=3>
+          wk3
+        </td>
+        <td>
+          M
+        </td>
+        <td>
+          sick miss, maybe covered L1 regression?
+        </td>
+      </tr>
+      <tr>
+        <td>
+          W
+        </td>
+        <td>
+          <p>autocorrelation (cont)</p>
+
+          <p>look at length of runs (runs.test in R), (greater than or less
+          than the median?).</p>
+
+          <p> if there is an autocorrelation, then everything in
+          summary(model), except the estimates of the intercept and slope
+          (which will still be unbiased), is wrong. The standard error </p>
+
+          <p> if there is autocorrelation, we stop. Nothing in this course
+          covers, need advanced methods</p>
+
+          <p> test for unequal variance, we don't cover the details, bptest
+          in R. R-square does not handle non-constant vairance well,
+          underestimates quality of the fit. </p>
+
+          <p>advice, don't do summary() first, first do residual plots, then
+          do runs.test, then do plots of residuals. Basically, test each
+          assumption you made before looking into the results. I think I
+          could automate a lot of this.</p>
+
+          <p> how to deal with outliers? plots work great in sufficiently low
+          dimensions. Cooks distance, etc. What about outliers in the x?
+          Leverage. L1 regression, helps if there are outliers in y, but does
+          nothing for x outliers. Soemthing weird like median of squares will
+          help, but we won't cover it.</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          F
+        </td>
+        <td>
+          missed, sick
+        </td>
+      </tr>
+
+      <!--New Week-->
+      <tr>
+        <td rowspan=3>
+          wk3
+        </td>
+        <td>
+          M
+        </td>
+        <td>
+
+          <p>correlation between factors, the R 'car' package. What effect
+          does correlation between factors have? How can we detect it? Always
+          check for correlation. Colinearity. Multilinearity, tricky to figure out.</p>
+
+          <p>confidence intervals, what exactly are they? compare to credible intervals.</p>
+
+          <p>end of simple linear regression. oerview: what to do with the
+          data: 1) make a linear model, 2) test assumptions, check residuals
+          (are they a random sequence?), (normality test on covariates?),
+          check for non-constant variance (non-constant variance test, this
+          test assumes iid errors), now, if the previous ones hold, can do
+          summary table. Check F. If standard error is larger than the
+          estimate, probably means something is off, colinearity or such. If
+          all this works, then you have a good model for explaining the data,
+          though nott necessarily for prediction.</p>
+
+          <p>moving on. what if y is {0,1}? If you try fitting this to a
+          linear line, y will asymptotically go to (+-)infinity, not 0 and 1.
+          Figure out the variance for the bernoulli, then sub in the linear
+          model with betas and what not, see that the variance is dependent
+          on x, this violates the assumption of linear models.</p>
+
+          <p>So we need a function to map from R to (0,1). Possibilities,
+          sigmoid function. There are others. </p>
+
+        </td>
+      </tr>
     </table>
 
     <h2>Notes of teaching style</h2>
