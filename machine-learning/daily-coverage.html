@@ -180,7 +180,7 @@
       <!--New Week-->
       <tr>
         <td rowspan=3>
-          wk3
+          wk4
         </td>
         <td>
           M
@@ -234,7 +234,7 @@
       <!--New Week-->
       <tr>
         <td rowspan=3>
-          wk3
+          wk5
         </td>
         <td>
           M
@@ -268,6 +268,182 @@
 
         </td>
       </tr>
+      <tr>
+        <td>
+          W
+        </td>
+        <td>
+          missed this day also
+        </td>
+      </tr>
+      <tr>
+        <td>
+          F
+        </td>
+        <td>
+
+          <p>yeah, ..., so I am totally lost now. Dropping immediately into
+          maximum likelyhood. Something logistic.</p>
+
+          <p>$l(\beta_0, \beta_1) = ... = \pi_i ...$</p>
+
+          <p>Fischer information, where is the variance accounted for? 
+
+        </td>
+      </tr>
+      <!--New Week-->
+      <tr>
+        <td rowspan=3>
+          wk6
+        </td>
+        <td>
+          M
+        </td>
+        <td>
+
+          <p>Discussing logistic regression classifiers. Plot the sigmoid,
+          above, 50%, say, is positive. Interpret all the summary() output.
+          What are the residuals? Complicated, won't cover, but deviance. Where
+          is the F-test? R doesn't give you the F-test, but you can do it.
+          Build the NULL model, glm(x~1, ...). Then do an anova test, with the
+          two models (outputs of glm). Then look at deviance and the p-value.</p>
+
+          <p> Confusionn matrix. (predicted-class, true-class) matrix. Bayes
+          classifier minimizes error, but from the human point of view,
+          sometimes one type of error is preferable to another. For example,
+          reduce false-positives at the cost of increasing the total error. Can
+          you generalize the confustion matrix to n-classifiers. Then there are
+          A predicted as B errors. </p>
+
+          <p> You can plot FP against TP, characteristic curve. Always make
+          these plots, the area under the curve, using test data. Checks the
+          variance of the predictor, not a test. </p>
+
+          <p>When is logistic regression good, what assumptions are made?
+          Needn't assume normality or equal variance.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          W
+        </td>
+        <td>
+
+          <p>Linear discriminant analysis</p>
+
+          <p> Bayes rule, how does this help us? Split the denominator into
+          full probability (sum of conditional probabilities). Want to
+          estimates the posterior distribution, need to maximize, so only
+          things that depend on k matter for maximization purposes, so
+          denominator doesn't matter. So, we have
+          
+          $posterior \propto prior * likelihood$
+
+          <p>Assume the likelyhood is normal with constant variance ...<\p>
+
+          <p>Now, since we are dealing with maxima, we can take a log, the max
+          and min will stay the same. This simplifies down to an equation
+          linear relative to x.</p>
+
+          <p>If we also assume all classes have equal variance, then
+          discrimination mean is simply $x = \frac{\mu_1 + \mu_2}{2}$<\p>
+
+          <p>So if we make all these horrific assumptions, then we get a
+          classfier that is dependent only on the class means. If these
+          assumptions hold, this is the best possible classifier.</p>
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          F
+        </td>
+          <p> Bayesian classifier multivariate case. </p>
+        <td>
+      </tr>
+          
+    <!--New Week-->
+    <tr>
+      <td rowspan=3>
+        wk7
+      </td>
+      <td>
+        M
+      </td>
+
+      <td>
+        <p>What do you do first, test if they are classifiable, do they
+        overlap, there is a test named xxx. Are the data normal? yes/no, are
+        they of equal variance? Build this tree ...</p>
+        
+        <p>Now discussing QDA, in LDA, the covariance matrix was constant, thus
+        could be ignored when calculating the maximum. In QDA, the covariance
+        matrix is different in each class. Look in the notes for the math
+        development, the book seems to be wrong. What is the test for
+        multivariate normal variance? QDA is a generalization of LDA, so you
+        could alwaus use it, and test whether the quadratic coefficients are
+        significantly different from 0. Then QDA reduces to LDA.</p>
+
+        <p>Since LDA is less flexible (estimates ~k parameters rather than
+        ~k^2, where k is number of dimensions), variance is lower (algthough
+        bias will be higher). How does this differ, or does it, from
+        overfitting?</p>
+        
+        <p>QDA is also computationally musch slower greater O(n^2).</p>
+        
+        <p> If you can assume conditional independence (which does not follow
+        fro iid) then you can decompose the a d-dimensional probrlem to the
+        product of d 1-dimentionsal problems. Naive bayes.</p>
+      <td>
+    </tr>
+    <tr>
+      <td>
+        W
+      </td>
+      <td>
+         
+      </td>
+    </tr>
+    <tr>
+      <td>
+        F
+      </td>
+      <td>
+         
+      </td>
+    </tr>
+
+    <!--New Week-->
+    <tr>
+      <tr>
+        <td rowspan=3>
+        wk8
+        </td>
+        <td>
+        M
+        </td>
+    
+        <td>
+      </tr>
+    
+      <tr>
+        <td>
+        W
+        </td>
+    
+        <td>
+      </tr>
+    
+      <tr>
+        <td>
+        F
+        </td>
+    
+        <td>
+      </tr>
+    </td>
+
     </table>
 
     <h2>Notes of teaching style</h2>
@@ -277,6 +453,18 @@
     instructor misses this. The question seems trivial, of course complexity is
     the number of parameters in the model. But the student is confusing the
     complexity of the model and the complexity of the data.
+
+    Why do people get lost in classes? What the instructor is saying at a given
+    point is not complicated, but people are lost. To be fair I am lost.
+    Reason? Because there are pieces of background missing. Context is missing.
+    Understanding requires context.
+
+
+
+    <h2>Questions</h2>
+
+    How do you prove that an equation has no closed form solution?
+
 
 </body>
 
