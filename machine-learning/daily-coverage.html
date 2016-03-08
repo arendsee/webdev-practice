@@ -84,7 +84,8 @@
           <p>How to measure goodness of fit, mean sum of squares. Why square
           the residuals? Makes the math easier.</p>
         
-        </td> </tr>
+        </td>
+      </tr>
 
 
       
@@ -291,6 +292,7 @@
 
         </td>
       </tr>
+
       <!--New Week-->
       <tr>
         <td rowspan=3>
@@ -359,8 +361,9 @@
         <td>
           F
         </td>
-          <p> Bayesian classifier multivariate case. </p>
         <td>
+          <p> Bayesian classifier multivariate case. </p>
+        </td>
       </tr>
           
     <!--New Week-->
@@ -393,16 +396,30 @@
         <p>QDA is also computationally musch slower greater O(n^2).</p>
         
         <p> If you can assume conditional independence (which does not follow
-        fro iid) then you can decompose the a d-dimensional probrlem to the
+        from iid) then you can decompose the a d-dimensional problem to the
         product of d 1-dimentionsal problems. Naive bayes.</p>
-      <td>
+      </td>
     </tr>
     <tr>
       <td>
         W
       </td>
       <td>
-         
+
+        <p> Continueing Bayes classifier, why assume conditional independence.
+        Reduces the dimensionality fo the problem. Avoids the curse of
+        dimensionality. Width of hypotenuse in n-dimensions is square(n). All
+        things tend to the edges, as a shell asymptotically. Can't really do
+        higher dimensional density estimates, not practiacally at least.</p>
+
+        <p> Estimate the density, simplest approach is just a histogram, but it
+        is discrete. You can take the derivative of the CDF, but what is this?
+        Go back the the definition of a derivative $lim_{h to inf} = ...$, move
+        to an estimator of f(x), then an indicator: $\propto sum I\{ -1 \le
+        \frac{x-X_i}{h}\}. Well, see the notes (error in first step). I've done
+        all this before, but his development of the theory behind it is
+        awesome.</p>
+
       </td>
     </tr>
     <tr>
@@ -410,7 +427,17 @@
         F
       </td>
       <td>
-         
+
+        <p> Is there an optimal smoothing function (kernel function)? Yes, but
+        it doesn't make much difference. More important is selection of the
+        smoothing parameter. There is a complicated equation for estimating the
+        optimal smoothing function.</p>
+
+        <p>Can you test for the norality of the predictors in the Naive Bayes
+        framework? We previously assumed conditional independence, we assumed
+        it, we can't easily test for it. Not much point in testing for
+        normal?</p>
+
       </td>
     </tr>
 
@@ -418,13 +445,158 @@
     <tr>
       <tr>
         <td rowspan=3>
-        wk8
+        wk3
         </td>
         <td>
         M
         </td>
-    
         <td>
+
+          <p>Chapter 5 - cross-validation versus resampling. Get concepts from
+          this section, don't need too much theory. Most the the standard
+          statistical stuff, F-values for regression, etc, works great to
+          describe how well. But says nothing about prediction ability. A
+          linear model can be overfit. Chapter 5 develops methods that prevent
+          overfitting, prevent a method from "bending too much".</p>
+
+          <p> Three methods </p>
+
+          <p> Dedicated training and testing sets </p>
+
+          <p> leave one out </p>
+
+          <p> k-fold cross something or other </p>
+
+          <p> all of these are estimates of the prediction ability. the
+          leave-one-out is basically unbiased, but the variance is large. The
+          k-fold corss is more biased, but has lower variance.</p>
+
+          <p> Never use two-fold cross validation, too much variance. Also
+          don't just come up with some k-fold setup just because it divides
+          evenly. </p>
+
+          <p> You have to estimate the model parameters, e.g. smoothing
+          parameter and others. Don't thoughtlessly use rules of thumb. </p>
+
+          <p> glm is nice for this, even if you are doing pure linear
+          regression, because you can use cv.glm to do cross-validation. By
+          setting the family to identity,  </p>
+
+          <p> choosing which parameter count to use it not trivial, there are
+          methods for comparing error bars ... </p>
+
+        </td>
+      </tr>
+    
+      <tr>
+        <td>
+        W
+        </td>
+        <td>
+          <p> Why not ever go past 10-fold? The variance becomes too high? </p>    
+
+          <p> For k-nearest neighbors, how do you chose a good k? We have a
+          good metric for prediction, we can just try every k and find the one
+          with the minimum prediction error. The function will be messy, not a
+          neat convex output. </p>
+
+          <p> Choosing the hyper-parameter, e.g. k, is the usually the most
+          time intensize part of the problem. Hutchinson's trace algorithm.
+          When not to use GCV? No matter how much the noise in the data, it
+          always finds the same value. This is because you take the mean of the
+          trace, rather than taking each into account. </p>
+
+          <p> So if you can't calculate the variance of an estimator, what can
+          we do? Obviously we can collect more data. But if this is not
+          possible? Bootstrap. Sampling without replacement results in
+          dependence between sampled elements.</p>
+          
+          <p>But bootstrap can fail, for example you cannot bootstrap the
+          maximum of a dataset. Cannot work on minima, maxima, boundary
+          problems, that sort of thing. There are other variants of
+          bootstrapping. Parametric varieties.</p>
+
+        </td>
+      </tr>
+    
+      <tr>
+        <td>
+        F
+        </td>
+        <td>
+          <p> Bootstraps can also be used to estimate distributions. </p>    
+
+          <p> Bootstrap can also be used for regression. Bootstrap a sample,
+          estimate coefficients, repeat, then estimate error on the variables.
+          The advantage is that bs makes no assumptions about the data, e.g.
+          allows error in x. </p>
+
+          <p> Bootstrap can fail, e.g. predicting max of uniform. Can try a
+          parametric bootstrap. </p>
+
+          <p> Bootstrap assumes iid, it also fails on heteroskedacity in the
+          data. Then it has to account for the generation process. There are
+          ways to deal with this. </p>
+
+        </td>
+      </tr>
+    </td>
+
+    <!--New Week-->
+    <tr>
+      <tr>
+        <td rowspan=3>
+        wk3
+        </td>
+        <td>
+        M
+        </td>
+        <td>
+
+          <p> On to chapter 6. Variable selection. You want to reduce
+          parameters because of 1) overfitting and 2) the curse of
+          dimensionality. If youhave more variales than data, then you do not
+          have a unique solution.</p>
+
+          <p> So given a huge number of parameters and few data, how can you
+          choose the best (or at least a useful) subset of the parameters? 1)
+          select subset 2) shrink coefficient, but keep original variables 3)
+          dimensionality reduction (e.g. PCA), do not keep original
+          variables.</p>
+
+          <p> How to select a good model? </p>
+
+          <p> Why not choose the high order polynomial when a linear one fits?
+          High variance results from the large number of coefficients that need
+          to be estimated. </p>
+
+          <p> What criteria to use? Prediction error. Cross validation works,
+          but is expensive. </p>
+
+          <p> Akaike, simple derivation (run through this). Akaike can be
+          strongly biased under certain conditions. AICC, Akaike corrected
+          accounts for this. BIC, similar deal, higher penalty for complexity.
+          </p>
+
+          <p> There is a difference between BIC and AICC, difference between
+          being selection consistent and model consistent. Say we have a set of
+          models, $M$. If a point is outside the model class, it finds the
+          closest model in the set. BIC can go to whatever if the point is
+          outside the class. If the point is in the model class, BIC converges
+          to the real one, AICC not necessarily does. Given this, there are
+          cases where you should not use BIC (figure this out).</p>
+
+          <p> There are a bunch of others. E.g. PRESS, which is just
+          leave-one-out cross-validation.</p>
+
+          <p> No method guarantees a best set of variables? Naive solution, try
+          all possible combinations, this will give you the best possible set
+          of variables for this model. </p>
+
+          <p> But variable selection and model selection are completely
+          different problems. </p>
+
+        </td>
       </tr>
     
       <tr>
@@ -448,23 +620,20 @@
 
     <h2>Notes of teaching style</h2>
 
-    I saw for a moment the mismatch between minds. The student asks what
+    <p>I saw for a moment the mismatch between minds. The student asks what
     complexity means in this context, "the dimensionality of the data". But the
     instructor misses this. The question seems trivial, of course complexity is
     the number of parameters in the model. But the student is confusing the
-    complexity of the model and the complexity of the data.
+    complexity of the model and the complexity of the data.</p>
 
-    Why do people get lost in classes? What the instructor is saying at a given
+    <p>Why do people get lost in classes? What the instructor is saying at a given
     point is not complicated, but people are lost. To be fair I am lost.
     Reason? Because there are pieces of background missing. Context is missing.
-    Understanding requires context.
-
-
+    Understanding requires context.</p>
 
     <h2>Questions</h2>
 
     How do you prove that an equation has no closed form solution?
-
 
 </body>
 
