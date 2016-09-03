@@ -1,8 +1,13 @@
-# webdev-practice
+A forray into Python Flask dev
 
-The purpose of this project is to record my exploration of web development.
-Commit messages will log my progress and record of the problems I encounter.
+I will loosely follow Miguel Grinberg's (MG) mega tutorial, at least initially.
 
-# Resources
+To start, I need to get the Flash (see MG)
 
-I intend to loosely follow the [W3 tutorials](http://www.w3schools.com/default.asp).
+``` bash
+python -m venv flask
+```
+
+This command creates a local version of the python interpreter.
+
+Now install flask and all necessary extensions, see Makefile
