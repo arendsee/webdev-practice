@@ -445,7 +445,7 @@
     <tr>
       <tr>
         <td rowspan=3>
-        wk3
+        wk8
         </td>
         <td>
         M
@@ -546,7 +546,7 @@
     <tr>
       <tr>
         <td rowspan=3>
-        wk3
+        wk9
         </td>
         <td>
         M
@@ -603,20 +603,588 @@
         <td>
         W
         </td>
-    
         <td>
+
+          <p> How many variables do you need to select? Never use RSS, take the
+          minimum in Cp, BIC, adjusted R-sq (or here, this is actually a
+          maximum), or whatever. (R leaps package)</p>
+
+          <p> What if they tie or disagree (the predictors)? You can use an
+          approach that actually sees the data, cross validation (e.g. PRESS).
+          Do full cross-validation on all the models would be computationally
+          very expensive. </p>
+
+          <p> To find the best model, `coef(x)` </p>
+
+          <p> IF you have hundreds of variables, you can't use these
+          combinatorial approaches. Forward selection, start at one variable,
+          add them incrementally, ignoring if it doesn't improve the model,
+          etc. Forward selection doesn't guarantee the best subset of
+          variables.</p>
+
+          `G = lm(...)`
+
+          `press(update(G, - . + x))`
+
+          <p> There is always a backwards algorithm, but it is not always
+          possible. If the number of variables is greater than the number of
+          data points. </p>
+
+        </td>
+        <td>
+        F
+        </td>
+        <td>
+
+          <p> How to invert a matrix that is not invertible, add something to
+          the diagonal. Ridge regression, ... reduces variance, increases bias.
+          </p>
+
+        </td>
+      </tr>
+
+    <!--New Week-->
+    <tr>
+      <tr>
+        <td rowspan=3>
+        wk10
+        </td>
+        <td>
+        M
+        </td>
+        <td>
+
+          <p>Ridge regression. What happens when lambda is 0, infinity? Run
+          through the proofs. Calculating lambda takes time, but ridge
+          regression always obtains a lower error result. However, making
+          confidence intervals is hard because ridge regression is biased. For
+          an unbiased estimator of beta, the confidence interval reduces to
+          t-distribution. But if biased, you have a complicated mess.</p>  
+
+          <p>How does ordinary least squares relate to ridge regression?</p>
+
+        </td>
+      </tr>
+    
+      <tr>
+        <td>
+        W
+        </td>
+        <td>
+
+          <p> Ridge regression versus lasso. Lasso sets to exactly 0. We
+          aren't going into too much theory, just understand. If there is
+          colinearity in the data, can we use lasso, does it make the matrix
+          invertible. No, can't use lasso if there is colinearity, have to use
+          ridge regression.</p>
+
+          <p> What is an L1 norm? Lasso is L1, Ridge is L2. ?  Elastic nets are
+          something inbetween. Alpha-1 is lasso, Alpha-2 is ridge, in the R
+          function ... </p>
+
+          <p> Don't forget to tune lambda, only use for linear models (there is
+          a kernel version for non-linear). </p>
+
+          <p> Ridge and lasso have a Bayesian interpretation. If the prior is
+          normal, you have ridge. If Laplacian, then lasso. </p>
+
+          <p> forward, backward, hybrid, lasso. Only these select components.
+          Reduce the dimension. Others (e.g. ridge) just shrink the
+          coefficients. </p>
+
+          <p> PCA! Columns that contain little variation (i.e. information)
+          aren't analytically usefull. </p>
+
+          <p> Two steps to PCA, 1) shift the center point of the data to origin
+          and then 2) rotate data so variation is maximized </p>
+
+        </td>
       </tr>
     
       <tr>
         <td>
         F
         </td>
-    
         <td>
+
+          <p> Continuing PCA. Translation and then rotation. What is a
+          non-convex problem? First step in PCA, you need to normalize to
+          unitless data. Do PCA on the correlation matrix. </p>
+
+          <p> Start with corr matrix R. get eigenvalue for R. Make plot of
+          sorted eigenvalues, the spectrum, scree plot. </p>
+
+          <p> PCA can fail on functions that are not ellipsoid? If it fails ... </p>
+
+          <p> Where are the Ys? PCA is unsupervised. </p>
+
+          <p> LASSO is usually more powerful now. </p>
+
+          <p> Partial least squares, similar to PCA but builds in Y. Isn't all
+          that great. It reduces, does regression, checks for improvement, if
+          improvemed, add the component (based on cross-validation). Only the
+          chemists really use it now. </p>
+
+          <p> High dimensional space is lonely. </p>
+
+          <p> How can we circumvent the curse? Model each dimentions
+          seperately, then combine them. This works ONLY if we assume additive
+          structure to the data. </p>
+
+          <p> Rule of thumb: for each dimension have around 100 points. </p>
+
+        </td>
       </tr>
     </td>
 
+    <!--New Week-->
+    <tr>
+      <tr>
+        <td rowspan=3>
+        wk11
+        </td>
+        <td>
+        M
+        </td>
+        <td>
+          
+          <p> How to find a function to describe arbitrary data. </p>
+
+          <p> All non-parametric estimators suffer from boundary effects. At the edges you lose half the data. </p>
+
+          <p> The problem with adapting the sizes of the windows is that you have to estimate the density. </p>
+
+          <p> Best possible way to build a line through through the data, requires choosing an h. How to determine which is good? Cross-validatoin. </p>
+
+        </td>
+      </tr>
+    
+      <tr>
+        <td>
+        W
+        </td>
+        <td>
+
+          <p> Never fit an even numbered polynomial, because the change from an
+          even degree to an odd degree variance never changes. Variance
+          increases when you change from odd to even degree. Local polynomial
+          regression is super good, automatically handles the boundary problem.
+          </p>
+
+          <p> What are the advantages of local polyomial </p>
+
+          <p> Smoothing regression vs curve fitting - curve fitting was made by
+          mathematicians, they assume no noise. </p>
+
+          <p> SPLINES: another non-parametric means of fitting. </p>
+
+          <p> The spline chooses a poitn and cuts it in half, piecewise. Doing
+          it in higher dimensions is pretty tricky. The spline areas do not
+          overlap? This seems like a shit method.</p>
+
+          <p> Cubic splines preferred because it is the smallest polynomial
+          with a 2nd-derivative, and 2nd-derivative continuity is the smallest
+          that the human eye can perceive. </p>
+
+          <p> $4(K+1)$ parameters for the polynomials, but to smooth to 2nd
+          derivative, adds 3 constraints, so: $4(K+1) - 3K = K + 4$ </p>
+
+          <p> So, how many knots? Too many and you interpolate, too few and you
+          get too much bias. </p>
+
+          <p> Q: 1) how many knots, 2) where to put the knots, 3) </p>
+
+        </td>
+      </tr>
+    
+      <tr>
+        <td>
+        F
+        </td>
+        <td>
+          <p> Continuing with Splines. </p>    
+
+          <p> Choices: How many knots do you use? Where do you put them? </p>
+
+          <p> At K=0, you have a global polynomial. Try each K, cross-validate. </p>
+
+          <p> Natural cubic spline is cubic spline everywhere except at the
+          boundaries, first and last knots, where it is linear. In this case we
+          have K degrees of freedom, we lose 2 df at each end. This decreased
+          flexibility reduces irregularities at the ends. </p>
+
+          <p> Better method? Add in all knots. Add a penalty which is
+          proportional to the integral of the squared 2nd derivative. What if
+          lambda is infinite, then we are in linear regression. Smoothing
+          spline. You will loose the integer number of degrees of freedom.</p>
+
+        </td>
+      </tr>
+    </td>
+
+      <!--New Week-->
+      <tr>
+        <tr>
+          <td rowspan=3>
+          wk12
+          </td>
+          <td>
+          M
+          </td>
+          <td>
+            <p> Smoothing spline is a natural 3rd order polynomial with a knots
+            at every point. A penalty term is added (see above). Usually, choose
+            a smoothing plain, but don't forget to tune the lambda. </p>
+
+            <p> Extend to 2 dimensions? Thin-plate spline, not very easy to
+            calculate, nor often used. </p>
+
+            <p> You can circumvent the curse if you can express the function as a
+            linear combination of funtions of a single variable. That is, if you
+            assume an additive model. If this can be done, you can solve the
+            system using backfit. </p>
+
+            <p> For a huge nomuber of dimensions, KNN is not great (everything is
+            too distance, maybe don't go over 5 or so). LR not great if the
+            boundary is non-linear. </p>
+
+            <p> In general, what model will work? Think through the assumptions
+            the models make, think through the assumptions the problem allow you
+            to make, then connect the dots. </p>
+
+            <p> General additive models. </p>
+
+            <p> For next week, support vector machines. Use the notes, not the
+            book, for chapter 9 on support vecotor machines. </p>
+          </td>
+        </tr>
+      
+        <tr>
+          <td>
+          W
+          </td>
+          <td>
+
+            <p> SVM - we want a convex problem (LR, QDA, LDA all are not convex).
+            SVM based on only 3 points in the linearly seperable case. The normal
+            vectors between the closest three points and the optimal line are the
+            support vectors. 
+            </p>
+
+            <p> See notes at end of my notebook </p>
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td>
+          F
+          </td>
+          <td>
+
+            <p> Yesterday covered ideal case with linearly seperable classes. </p>
+
+            <p> More details on the margins, why we scale the way we do.
+            Remember, the margin is half the distance between the nearest two
+            points. </p>
+
+            <p> 2-norm? What is a 2-norm? The margin is a 2-norm (whatever that
+            is). The 2-norm is t(X)X. So we get the thing we want to minimize,
+            now, how do we solve it? Legrange multipliers (see notes on
+            optimization). This is used to minimize something when there are
+            constraints.</p>
+
+            <p> You can solve for alpha and w, but not b. Solving b is a
+            quadratic optimization problem. Nobody in 1961 wanted to deal with
+            that. </p>
+      
+          </td> </tr> </td>
+
+          <!--New Week-->
+          <tr>
+            <tr>
+              <td rowspan=3>
+              wk13
+              </td>
+              <td>
+              M
+              </td>
+              <td>
+
+                <p> SVM, only the support vectors matter. Rule: find minimum
+                set of support vectors such that y less than 1. What if they
+                overlap?  Then there is no solution, can't solve the quadratic
+                problem.  Numeric optimization programs these days can still
+                get an approximate answer. But from a strict SVM method, you
+                get no solution? </p>
+               
+                <p> VC dimension, how many times can you shatter a set? Why
+                don't statisticians like SVM? They can't prove the variance
+                behavior, etc. Also he proved lower bounds using combinatoric
+                approaches. </p>
+                
+                <p> Primal to Dual space. H -- sum alpha_i y_i x_i^T x + b.
+                Sign of that equation is the class. </p>
+
+                <p> How can you solve the problem for overlaping cases. </p>
+                
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+              W
+              </td>
+              <td>
+
+                <p> Continue suppport vectors with relaxed standards for
+                mis-classification. Be sure to know what the constraints are (2
+                of them). Solving requires Legrange multipliers, but don't know
+                details. There is one tuning parameter. </p>
+
+                <p> Not recommended for huge problem. SVM are quadratic since
+                requires holding X^T in memory. There are smarter tricks that
+                accelerates it, by taking two points at a time, checking
+                constraints, then merging them to one point if they are met.
+                </p>
+
+                <p> Assumptions: none about X distribution, unlike LDA, but LR
+                doesn't either, and is easily solvable. But if classes are
+                non-linear, how to separate? LR can't. </p>
+
+                <p> Neural nets were used prior to 1995 for non-linear
+                problems, but there were very simple classes of problems that
+                it could no classify. SVM solves this by transforming X into
+                higher dimensions.The higher the dimension, the more likely the
+                classes are to be seperable. </p>
+
+                <p> Need a Hilbert space. </p>
+
+
+              </td>
+            </tr>
+          
+            <tr>
+              <td>
+              F
+              </td>
+              <td>
+
+                <p> SVM, linear separation based on transforming into higher
+                dimension where the classes are seperable. Transform only on
+                the X's. Minimize xxx s.t. yyy is zzz. But now map x into a new
+                space.</p> 
+
+                <p> Function is positive definite, then the fourier transform
+                is positive at all points. If positive semidefinite, some of
+                the eigenvalues can be 0. So you don't actually need to
+                transform, or even calculate phi. The kernel trick (has a
+                theorem name) adds a new smoothing parameter that needs to be
+                estimated.</p>
+
+                <p> MLP kernels Mike does not recomend. </p>
+
+                <p> Unbounded kernels are not good if you have outliers. </p>
+
+                <p> RBF is gernerally pretty good, especially for continuous
+                data (not as great for binary). </p>
+
+                <p> SVM is actually a neural network. Neurons are kernels? SVM
+                puts kernels only over data that are present in the dataset,
+                and only over the support vectors. </p>
+
+                <p> Simulated annealing at first then go to derivative free
+                approach. Tends to go fairly fast. </p>
+
+              </td>
+            </tr>
+          </td>
+
+        <!--New Week-->
+        <tr>
+          <tr>
+            <td rowspan=3>
+            wk14
+            </td>
+            <td>
+            M
+            </td>
+            <td>
+
+              <p> How do we extend SVM to multiple classes? Just leave one
+              class out, and run binary classification on class A versus
+              classes non-A. Alternatively, do pairwise comparisions. </p>
+
+              <p> SVM regression. Not used very much for regression because it
+              doesn't deal well with sparseness, adds a third tuning parameter,
+              sparseness. It is very important to set this </p>
+              
+              <p> How does each smoothing parameter affect the outcome, low
+              sigma means closer fitting. Bound lead to ... ; epsilon can add
+              bias by letting systematic trends fall inside the tube, too
+              large, then everything is a support vector.</p>
+
+              <p> The tube of accuracy, the epsilon around the equation, is NOT
+              a confidence interval. Mike doesn't like it. Why, there can be
+              structure inside the tube of accuracy that would be missed. </p>
+
+              <p> Kernel ridge regression, no sparseness, no support vectors,
+              not SVM anymore. Originally intended just to relax the
+              restrictions. </p>
+
+              <p> How you cross-validate affects the robustness of the SVM
+              regression. It has a robust, l1, loss function, but if the
+              corss-validation is not robust, neither will be the SVM. </p>
+
+              <p> For non-parametric systems, every step must be robust or the
+              end result is not. Loss function, cross-validation, etc. </p>
+
+              <p> What does l1, l2 etc loss functions mean? I think this refers to  </p>
+
+              <p> Do you have to tune parameters for each binary classification
+              sub-problem in multi-class SVM? </p>
+
+            </td>
+          </tr>
+        
+          <tr>
+            <td>
+            W
+            </td>
+            <td>
+              <p> R package for SVM, not as good as Matlab (no cross validation).
+              lssvm, R package as a very good minimizing function for the
+              smoothing parameters. Matlab, initlssvm, can leave smoothing
+              parameters empty, it will figure them out. tunelssvm, tune
+              parameters. </p>
+
+              <p> Why is lssvm a smoothing. OFr cross-validation (min of 10 or sqrt(n)) </p>
+
+              <p> For classification, lsssvm gives results nearly
+              indistinguishable from standard svm. There is a difference in the
+              regression setting. </p>
+
+              <p> gridsearch versus simplex, Mike likes simplex. </p>
+
+              <p> One-vs-one give complete bounds, one-vs-others can have spaces
+              that the SVM can't classify. </p>
+
+              <p> lsssvm and svm, which is robust? R has nothing for lssvm? </p>
+
+              <p> Moving on to clustering, unsupervised learning. Problems, don't
+              know the labels or how many there are.</p>
+
+              <p> kmeans - assumptions - 1) no overlaps in classes 'c_i
+              intersection c_j = null'. 2) all points can be classified, union of
+              all classes includes all indices.</p>
+
+              <p> We want to minimize the variance within groups and maximize
+              variance between groups. </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+            F
+            </td>
+            <td>
+            
+              <p> K Means Clustering. </p>
+
+            </td>
+          </tr>
+        </td>
+
+      <!--New Week-->
+      <tr>
+        <tr>
+          <td rowspan=3>
+          wk15
+          </td>
+          <td>
+          M
+          </td>
+          <td>
+
+            <p> First thing to do in KMC, find the number of clusters. When you
+            get clusters, use gap_statistics. Find gap distances. </p>
+
+            <p> If you want to get around the estimation of the number of
+            clusters, you can use hiearchical clustering. However, the method
+            you use to define distance is somewhat arbitrary. Also there is no
+            guarantee that it will give an optimal solution. Then to define
+            clusters, you drop a horizontal bar, ugly. </p>
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td>
+          W
+          </td>
+          <td>
+
+          <p> Distances, often you need to take into account correlation. In
+          this case, you want to use the Mahabanois distance, which uses
+          Euclidean distance weighted by variance. </p>
+
+          <p> Chapter 8 - tree based methods. If done right super good, if not
+          awful. Trees don't do feature selection, but the topology of the tree
+          includes a type of relevance selection. Decisions are made on higher
+          variables before lower variables are seen.</p>
+
+          <p> Where to cut? Minimize RSS. </p>
+
+          </td>
+        </tr>
+      
+        <tr>
+          <td>
+          F
+          </td>
+          <td>
+
+            <p> Continuing trees. Trees deal easily with categorical variables,
+            unlike all others that we have seen, which require dummy variables.
+            If you descend all the way down, then you can get overfitting. You
+            need to prune the tree, add a penalty term which is a function of
+            the number of leaves. Actually, just aT, where a is a constant
+            chosen by cross-validation, and T is the number of leaves.</p>
+
+            <p> Minimizing classification error does not work well for trees.
+            Instead usually either Entropy or gini index is minimized. </p>
+
+            <p> Gini index: minimize the variance over all the branches (sum of
+            Bernuilli variances). </p>
+
+            <p> Bagging. Bootstrap the data, build trees. But the trees are
+            correlated. How to deal with that? </p>
+
+            <p> Random forest: take subset of predictors in each tree (maybe
+            sqrt(p)). About equal to SVM in performace. Loose the visual
+            representation, but gain lower variance. </p>
+
+            <p> Combining low variance methods the results is bad, but
+            combining lots of weak learners, like individual trees, which have
+            high variance, can be very effective. Very robust against
+            overfitting.</p>
+
+            <p> Boosting: grow the tre slowly, initialize to 0, take a first
+            split, check the residuals. Take the residuals, then try to model
+            the residuals. Can overfit by trying to learn from error.
+            Eventually you will just memorize the data. So you must control,
+            cross-validate. </p>
+
+            <p> Boot strapping on average uses only 2/3 of all individuals, so
+            you can test against that without doing extra cross-validation. Out
+            of bad error. </p>
+
+          </td>
+        </tr>
+      </td>
+
     </table>
+
+    <!--
 
     <h2>Notes of teaching style</h2>
 
@@ -631,9 +1199,14 @@
     Reason? Because there are pieces of background missing. Context is missing.
     Understanding requires context.</p>
 
+    <p> At the beginning of each lecture, you really ought to reintroduce every
+    variable. </p>
+
     <h2>Questions</h2>
 
     How do you prove that an equation has no closed form solution?
+
+    -->
 
 </body>
 
