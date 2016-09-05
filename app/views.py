@@ -1,5 +1,28 @@
-from flask import render_template
+# modified from Miguel Grinberg's tutorial
+
+from flask import render_template, flash, redirect
 from app import app
+from .forms import LoginForm
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        # this text will be shown to the user
+        flash('OpenID="%s", remember_me=%s, Assyrian capital=%s' %
+              (
+                  form.openid.data,
+                  str(form.remember_me.data),
+                  form.assyria
+              ))
+        return redirect('/index')
+    return render_template(
+        'login.html',
+        title='Sign In',
+        form=form,
+        providers=app.config['OPENID_PROVIDERS']
+    )
 
 
 @app.route('/')

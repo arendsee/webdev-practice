@@ -1,0 +1,31 @@
+<!-- modified from Miguel Grinberg's tutorial -->
+
+<html>
+  <head>
+    <meta name="keywords" content="ramble flotsam">
+    <meta name="description" content="A site I use to practice webdev and stash notes">
+    <meta charset=UTF-8>
+    <meta name="author" content="Zebulun Arendsee">
+    <meta http-equiv="refresh" content="180">
+    <link rel="stylesheet" href="style.css">
+    {% if title %}
+    <title>{{ title }} - messing with webdev </title>
+    {% else %}
+    <title>ladida</title>
+    {% endif %}
+  </head>
+  <body>
+    <div>ladida: <a href="/index">Home</a></div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>

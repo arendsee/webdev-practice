@@ -1,16 +1,7 @@
-<!DOCTYPE HTML>
-<html lang=en-US>
-  <head>
-    <title>HTML test</title>
-    <meta name="keywords" content="ramble flotsam">
-    <meta name="description" content="A site I use to practice webdev and stash notes">
-    <meta charset=UTF-8>
-    <meta name="author" content="Zebulun Arendsee">
-    <meta http-equiv="refresh" content="180">
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Test</h1>
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Test</h1>
     <a href=https://github.com/arendsee title='where it all starts' target='_self'>github page (in current window)</a>
     <br>
     <a href=https://github.com/arendsee title='where it all starts' target='_blank'>github page (in new tab)</a>
@@ -18,6 +9,8 @@
     <a href=https://github.com/arendsee title='where it all starts' target='_top'>github page (whatever top is)</a>
     <br>
     <a href="{{ url_for('rants') }}" title='rants against buffalo'>rants</a>
+    <br>
+    <a href="{{ url_for('login') }}" title='login'>flask login form</a>
     <br>
     <a href="{{ url_for('tables') }}" title='table page'>tables</a>
     <br>
@@ -29,25 +22,17 @@
     <br>
     <a href="{{ url_for('math') }}">math and latex</a>
     <br>
-
     <p id=unique>This is a unique paragraph</p>
     <p id=unique>This is a unique paragraph</p>
     <hr>
     <p>Here is a render I made in Blender</p>
     <img src=images/basketbottle.png alt=HTML5_Logo.png style="width:360px;height:243px" title='basket bottle'>
-  </body>
-
-  <!-- div and span delimit blocks; they often are used to confer style or class -->
-  <div style="color:green">
+    <!-- div and span delimit blocks; they often are used to confer style or class -->
+    <div style="color:green">
       This is a <span style="color:red">red</span> word in a green paragraph
-  </div>
-
+    </div>
   <h2>Layout tests</h2>
-
     <a href="{{ url_for('layout01') }}">layout example 1</a>
-
     <a href="{{ url_for('class_vs_id') }}">Class versus id</a>
-    
     <a href="{{ url_for('iframe') }}">iframe example</a>
-
-</html>
+{% endblock %}
