@@ -1,4 +1,4 @@
-all: flask
+all:
 	python -m venv flask
 	flask/bin/pip install flask
 	flask/bin/pip install flask-login
