@@ -1,5 +1,7 @@
 all:
+	# use a local version of the python interpreter
 	python -m venv flask
+	# install flask and all necessary extensions
 	flask/bin/pip install flask
 	flask/bin/pip install flask-login
 	flask/bin/pip install flask-openid
